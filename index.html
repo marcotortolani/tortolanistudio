@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marco Tortolani — Diseño y desarrollo web · Uruguay</title>
+    <meta
+      name="description"
+      content="Diseño y desarrollo web a medida para negocios que quieren destacar online. Trabajo boutique, atención personal. Uruguay."
+    />
+    <meta name="author" content="Marco Tortolani" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tortolanistudio.com" />
+    <meta
+      property="og:title"
+      content="Marco Tortolani — Diseño y desarrollo web"
+    />
+    <meta
+      property="og:description"
+      content="Diseño y desarrollo web a medida para negocios que quieren destacar online. Pocos proyectos, mucho detalle."
+    />
+    <meta
+      property="og:image"
+      content="https://tortolanistudio.com/assets/og-image.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="canonical" href="https://tortolanistudio.com" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols (subset used: design_services, bolt, storefront, menu, close) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/styles.css" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Tortolani Studio",
+        "description": "Diseño y desarrollo web a medida para negocios que quieren destacar online.",
+        "url": "https://tortolanistudio.com",
+        "email": "info@tortolanistudio.com",
+        "telephone": "+541161386615",
+        "address": { "@type": "PostalAddress", "addressCountry": "UY" },
+        "sameAs": ["https://www.linkedin.com/in/marco-tortolani/"]
+      }
+    </script>
+  </head>
+
+  <body class="selection:bg-forest-accent selection:text-ivory-base">
+    <!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-hairline-border transition-all duration-300"
+    >
+      <div
+        class="max-w-[1320px] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+        >
+          <img
+            src="./assets/logo.svg"
+            alt="Marco Tortolani Studio"
+            class="h-7 w-auto"
+          />
+        </a>
+        <!-- Desktop links -->
+        <ul class="hidden md:flex items-center gap-gutter">
+          <li>
+            <a
+              href="#portfolio"
+              class="text-secondary font-label-caps text-label-caps hover:text-forest-accent transition-colors duration-300 link-underline"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#proceso"
+              class="text-secondary font-label-caps text-label-caps hover:text-forest-accent transition-colors duration-300 link-underline"
+              >Proceso</a
+            >
+          </li>
+          <li>
+            <a
+              href="#sobre-mi"
+              class="text-secondary font-label-caps text-label-caps hover:text-forest-accent transition-colors duration-300 link-underline"
+              >Sobre mí</a
+            >
+          </li>
+        </ul>
+        <!-- CTA + hamburger -->
+        <div class="flex items-center gap-4">
+          <a
+            href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden md:inline-flex items-center justify-center bg-forest-accent text-ivory-base px-6 py-3 font-label-caps text-label-caps rounded transition-all duration-300 btn-underline-anim"
+          >
+            Agendá una llamada
+          </a>
+          <button
+            id="menu-btn"
+            class="md:hidden text-ink-black flex items-center justify-center p-2"
+            aria-label="Abrir menú"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+     MOBILE MENU
+═══════════════════════════════════════ -->
+    <div
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menú de navegación"
+    >
+      <button
+        id="menu-close"
+        class="absolute top-6 right-6 text-ink-black p-2"
+        aria-label="Cerrar menú"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <nav>
+        <ul class="flex flex-col gap-8">
+          <li>
+            <a
+              href="#portfolio"
+              class="font-headline-sm text-headline-sm text-ink-black hover:text-forest-accent transition-colors"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#proceso"
+              class="font-headline-sm text-headline-sm text-ink-black hover:text-forest-accent transition-colors"
+              >Proceso</a
+            >
+          </li>
+          <li>
+            <a
+              href="#sobre-mi"
+              class="font-headline-sm text-headline-sm text-ink-black hover:text-forest-accent transition-colors"
+              >Sobre mí</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <a
+        href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-auto inline-flex items-center justify-center bg-forest-accent text-ivory-base px-8 py-4 font-label-caps text-label-caps rounded transition-all duration-300"
+      >
+        Agendá una llamada
+      </a>
+    </div>
+
+    <main>
+      <!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+      <section
+        class="min-h-screen flex items-center pt-48 pb-32 md:pt-64 md:pb-48 px-margin-mobile md:px-margin-desktop max-w-[1320px] mx-auto reveal active"
+      >
+        <div class="max-w-4xl">
+          <div class="inline-flex items-center gap-2 mb-10">
+            <span class="w-2 h-2 rounded-full bg-forest-accent"></span>
+            <span
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+              >Diseño y desarrollo web · Uruguay</span
+            >
+          </div>
+          <h1
+            class="font-display-lg text-[64px] md:text-[96px] text-ink-black mb-12 leading-[1.05] tracking-tight font-bold"
+          >
+            Sitios web que hacen que tu negocio se vea tan bueno como es.
+          </h1>
+          <p class="font-body-lg text-body-lg text-secondary max-w-2xl mb-16">
+            Diseño y desarrollo a medida para negocios que quieren destacar
+            online. Pocos proyectos, mucho detalle.
+          </p>
+          <a
+            href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center bg-forest-accent text-ivory-base px-8 py-4 font-label-caps text-label-caps rounded transition-all duration-300 btn-underline-anim btn-underline-anim-hero"
+          >
+            Agendá una llamada
+          </a>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     VALUE / WHY
+═══════════════════════════════════════ -->
+      <section
+        class="py-24 md:py-48 px-margin-mobile md:px-margin-desktop max-w-[1320px] mx-auto hairline-t reveal"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-5 mb-16 md:mb-0">
+            <h2
+              class="font-headline-md text-headline-md text-ink-black leading-snug pr-0 md:pr-8"
+            >
+              Tu próximo cliente te busca en Google antes de entrar. Si no tenés
+              una web que transmita confianza, lo perdés.
+            </h2>
+          </div>
+          <div
+            class="md:col-span-6 md:col-start-7 flex flex-col justify-center gap-16"
+          >
+            <div class="flex items-start gap-6">
+              <span
+                class="material-symbols-outlined text-forest-accent text-3xl flex-shrink-0"
+                >design_services</span
+              >
+              <div>
+                <h3
+                  class="font-headline-sm text-headline-sm text-ink-black mb-3"
+                >
+                  Diseño a medida
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-secondary leading-relaxed"
+                >
+                  Cada píxel está pensado para tu marca. Sin plantillas, sin
+                  cosas genéricas.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6">
+              <span
+                class="material-symbols-outlined text-forest-accent text-3xl flex-shrink-0"
+                >bolt</span
+              >
+              <div>
+                <h3
+                  class="font-headline-sm text-headline-sm text-ink-black mb-3"
+                >
+                  Rápido y sin vueltas
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-secondary leading-relaxed"
+                >
+                  Sitios optimizados que cargan al instante y procesos de
+                  trabajo eficientes.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6">
+              <span
+                class="material-symbols-outlined text-forest-accent text-3xl flex-shrink-0"
+                >storefront</span
+              >
+              <div>
+                <h3
+                  class="font-headline-sm text-headline-sm text-ink-black mb-3"
+                >
+                  Pensado para vender
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-secondary leading-relaxed"
+                >
+                  Estructuras claras que guían a tus usuarios hacia la acción
+                  que buscás.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     BOUTIQUE
+═══════════════════════════════════════ -->
+      <section
+        class="py-32 md:py-56 px-margin-mobile md:px-margin-desktop bg-surface-container-low hairline-y reveal"
+      >
+        <div class="max-w-[1320px] mx-auto text-center">
+          <h2
+            class="font-display-lg-mobile md:font-headline-md text-display-lg-mobile md:text-headline-md text-ink-black mb-8 max-w-3xl mx-auto"
+          >
+            Trabajo boutique, atención personal.
+          </h2>
+          <p
+            class="font-body-lg text-body-lg text-secondary mx-auto max-w-2xl leading-relaxed"
+          >
+            Tomo pocos proyectos por mes para dedicarle a cada uno el detalle
+            que merece. Trabajás directo conmigo, de principio a fin.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     PROCESO
+═══════════════════════════════════════ -->
+      <section
+        id="proceso"
+        class="py-24 md:py-48 px-margin-mobile md:px-margin-desktop max-w-[1320px] mx-auto hairline-b reveal"
+      >
+        <h2
+          class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-24 text-center"
+        >
+          El Proceso
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16"
+        >
+          <div class="relative group">
+            <span
+              class="absolute -top-16 left-0 text-[160px] font-display-lg font-bold text-surface-container-highest opacity-30 z-[-1] transition-colors group-hover:text-surface-dim leading-none select-none"
+              >01</span
+            >
+            <h3
+              class="font-headline-sm text-headline-sm text-ink-black mb-6 mt-12 pt-6 border-t border-hairline-border"
+            >
+              Charlamos
+            </h3>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Entiendo tu negocio y qué necesitás transmitir.
+            </p>
+          </div>
+          <div class="relative group">
+            <span
+              class="absolute -top-16 left-0 text-[160px] font-display-lg font-bold text-surface-container-highest opacity-30 z-[-1] transition-colors group-hover:text-surface-dim leading-none select-none"
+              >02</span
+            >
+            <h3
+              class="font-headline-sm text-headline-sm text-ink-black mb-6 mt-12 pt-6 border-t border-hairline-border"
+            >
+              Diseño a medida
+            </h3>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Te muestro una maqueta real antes de avanzar.
+            </p>
+          </div>
+          <div class="relative group">
+            <span
+              class="absolute -top-16 left-0 text-[160px] font-display-lg font-bold text-surface-container-highest opacity-30 z-[-1] transition-colors group-hover:text-surface-dim leading-none select-none"
+              >03</span
+            >
+            <h3
+              class="font-headline-sm text-headline-sm text-ink-black mb-6 mt-12 pt-6 border-t border-hairline-border"
+            >
+              Desarrollo
+            </h3>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Construyo el sitio, rápido y prolijo, optimizado para celular.
+            </p>
+          </div>
+          <div class="relative group">
+            <span
+              class="absolute -top-16 left-0 text-[160px] font-display-lg font-bold text-surface-container-highest opacity-30 z-[-1] transition-colors group-hover:text-surface-dim leading-none select-none"
+              >04</span
+            >
+            <h3
+              class="font-headline-sm text-headline-sm text-ink-black mb-6 mt-12 pt-6 border-t border-hairline-border"
+            >
+              Lanzamiento
+            </h3>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Tu web online, con dominio propio y todo listo para usar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     PORTFOLIO / CONCEPTOS
+═══════════════════════════════════════ -->
+      <section
+        id="portfolio"
+        class="py-24 md:py-48 px-margin-mobile md:px-margin-desktop max-w-[1320px] mx-auto reveal"
+      >
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 hairline-b pb-8"
+        >
+          <div>
+            <span
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-4"
+              >Trabajo</span
+            >
+            <h2 class="font-headline-md text-headline-md text-ink-black">
+              Algunos conceptos
+            </h2>
+          </div>
+          <p class="font-body-md text-body-md text-secondary max-w-xs">
+            A medida que completo proyectos, los sumo acá.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Placeholder 1 -->
+          <article class="group cursor-default">
+            <div
+              class="img-hover-scale aspect-[4/5] bg-surface-container-low mb-6 rounded-lg overflow-hidden"
+            >
+              <div class="w-full h-full flex items-center justify-center">
+                <span
+                  class="font-label-caps text-label-caps text-outline uppercase tracking-widest"
+                  >Próximamente</span
+                >
+              </div>
+            </div>
+            <h3
+              class="font-headline-sm text-[20px] text-ink-black mb-2 leading-snug"
+            >
+              Proyecto 01
+            </h3>
+            <p
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+            >
+              Diseño web · Branding
+            </p>
+          </article>
+          <!-- Placeholder 2 -->
+          <article class="group cursor-default md:mt-12">
+            <div
+              class="img-hover-scale aspect-[4/5] bg-surface-container mb-6 rounded-lg overflow-hidden"
+            >
+              <div class="w-full h-full flex items-center justify-center">
+                <span
+                  class="font-label-caps text-label-caps text-outline uppercase tracking-widest"
+                  >Próximamente</span
+                >
+              </div>
+            </div>
+            <h3
+              class="font-headline-sm text-[20px] text-ink-black mb-2 leading-snug"
+            >
+              Proyecto 02
+            </h3>
+            <p
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+            >
+              Desarrollo web · SEO
+            </p>
+          </article>
+          <!-- Placeholder 3 -->
+          <article class="group cursor-default">
+            <div
+              class="img-hover-scale aspect-[4/5] bg-surface-container-high mb-6 rounded-lg overflow-hidden"
+            >
+              <div class="w-full h-full flex items-center justify-center">
+                <span
+                  class="font-label-caps text-label-caps text-outline uppercase tracking-widest"
+                  >Próximamente</span
+                >
+              </div>
+            </div>
+            <h3
+              class="font-headline-sm text-[20px] text-ink-black mb-2 leading-snug"
+            >
+              Proyecto 03
+            </h3>
+            <p
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+            >
+              Landing page · E-commerce
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     SOBRE MÍ
+═══════════════════════════════════════ -->
+      <section
+        id="sobre-mi"
+        class="py-24 md:py-48 px-margin-mobile md:px-margin-desktop max-w-[1320px] mx-auto hairline-t reveal"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+          <div class="md:col-span-6">
+            <span
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-10"
+              >Sobre mí</span
+            >
+            <h2
+              class="font-headline-md text-headline-md text-ink-black mb-8 leading-snug"
+            >
+              Diseño y código como una sola disciplina.
+            </h2>
+            <p
+              class="font-body-lg text-body-lg text-secondary leading-relaxed mb-10"
+            >
+              Soy Marco. +5 años ayudando a marcas a tener una presencia digital
+              que esté a la altura. Me obsesiona el detalle y que cada sitio sea
+              simple, rápido y efectivo.
+            </p>
+            <a
+              href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 font-label-caps text-label-caps text-forest-accent hover:text-primary transition-colors duration-300 link-underline"
+            >
+              Trabajemos juntos
+            </a>
+          </div>
+          <div class="md:col-span-5 md:col-start-8">
+            <div
+              class="aspect-[3/4] bg-surface-container-low rounded-lg flex items-center justify-center"
+            >
+              <span
+                class="font-label-caps text-label-caps text-outline uppercase tracking-widest"
+                >Foto</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+     CTA BAND
+═══════════════════════════════════════ -->
+      <section
+        class="py-32 md:py-section-gap px-margin-mobile md:px-margin-desktop bg-ink-black reveal"
+      >
+        <div class="max-w-[1320px] mx-auto text-center">
+          <h2
+            class="font-display-lg-mobile md:font-headline-md text-display-lg-mobile md:text-headline-md text-ivory-base mb-10 max-w-2xl mx-auto leading-snug"
+          >
+            ¿Listo para que tu negocio se vea profesional online?
+          </h2>
+          <a
+            href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center bg-ivory-base text-ink-black px-8 py-4 font-label-caps text-label-caps rounded transition-all duration-300 mb-6 hover:bg-surface-container-low"
+          >
+            Agendá una llamada
+          </a>
+          <p
+            class="font-label-caps text-label-caps text-outline uppercase tracking-widest"
+          >
+            Tomo pocos proyectos por mes.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+    <footer class="bg-surface reveal">
+      <div
+        class="max-w-[1320px] mx-auto px-margin-mobile md:px-margin-desktop py-24 md:py-32 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-gutter hairline-t"
+      >
+        <div class="flex flex-col gap-6">
+          <img
+            src="./assets/logo.svg"
+            alt="Marco Tortolani Studio"
+            class="h-7 w-auto"
+          />
+          <p class="font-body-md text-body-md text-secondary">
+            © 2026 Marco — Diseñado y desarrollado en Uruguay.
+          </p>
+          <div
+            class="flex flex-col gap-2 font-body-md text-body-md text-ink-black"
+          >
+            <a
+              href="mailto:info@tortolanistudio.com"
+              class="hover:text-forest-accent transition-colors"
+              >info@tortolanistudio.com</a
+            >
+            <a
+              href="tel:+541161386615"
+              class="hover:text-forest-accent transition-colors"
+              >+541161386615</a
+            >
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-12 md:gap-24">
+          <div class="flex flex-col gap-6">
+            <h4
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+            >
+              Social
+            </h4>
+            <ul class="flex flex-col gap-4">
+              <li>
+                <a
+                  href="https://instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-body-md text-body-md text-secondary hover:text-forest-accent transition-colors link-underline"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/marco-tortolani/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-body-md text-body-md text-secondary hover:text-forest-accent transition-colors link-underline"
+                  >LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-6">
+            <h4
+              class="font-label-caps text-label-caps text-secondary uppercase tracking-widest"
+            >
+              Contacto
+            </h4>
+            <ul class="flex flex-col gap-4">
+              <li>
+                <a
+                  href="mailto:info@tortolanistudio.com"
+                  class="font-body-md text-body-md text-secondary hover:text-forest-accent transition-colors link-underline"
+                  >Email</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/541161386615?text=Hola%20Marco%2C%20quiero%20agendar%20una%20llamada%20sobre%20mi%20web"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-body-md text-body-md text-secondary hover:text-forest-accent transition-colors link-underline"
+                  >WhatsApp</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./assets/main.js"></script>
+  </body>
+</html>

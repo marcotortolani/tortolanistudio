@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAFAF7;
+    color: #1A1A1A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hairline dividers */
+  .hairline-b { border-bottom: 1px solid rgba(26, 26, 26, 0.1); }
+  .hairline-t { border-top: 1px solid rgba(26, 26, 26, 0.1); }
+  .hairline-y {
+    border-top: 1px solid rgba(26, 26, 26, 0.1);
+    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  }
+
+  /* Center-expand underline on hover */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 50%;
+    background-color: currentColor;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  .link-underline:hover::after { width: 100%; }
+
+  /* Image scale on hover */
+  .img-hover-scale { overflow: hidden; }
+  .img-hover-scale img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .img-hover-scale:hover img { transform: scale(1.03); }
+
+  /* CTA button underline animation */
+  .btn-underline-anim { position: relative; }
+  .btn-underline-anim::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 8px;
+    left: 50%;
+    background-color: #FAFAF7;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%);
+  }
+  .btn-underline-anim:hover::after { width: calc(100% - 48px); }
+  .btn-underline-anim-hero:hover::after { width: calc(100% - 64px); }
+
+}
+
+/* Mobile menu — outside @layer so Tailwind doesn't purge .open */
+#mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FAFAF7;
+  z-index: 40;
+  padding: 6rem 1.5rem 2rem;
+}
+#mobile-menu.open { display: flex; }
