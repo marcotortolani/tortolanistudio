@@ -10,22 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Mobile menu
+  // Mobile menu — botón hamburguesa/X toggle
   const menuBtn = document.getElementById('menu-btn');
-  const menuClose = document.getElementById('menu-close');
+  const menuIcon = menuBtn?.querySelector('.material-symbols-outlined');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  }
+  const openMenu = () => {
+    mobileMenu.classList.add('open');
+    if (menuIcon) menuIcon.textContent = 'close';
+    menuBtn.setAttribute('aria-label', 'Cerrar menú');
+    document.body.style.overflow = 'hidden';
+  };
   const closeMenu = () => {
-    mobileMenu?.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    if (menuIcon) menuIcon.textContent = 'menu';
+    menuBtn.setAttribute('aria-label', 'Abrir menú');
     document.body.style.overflow = '';
   };
-  menuClose?.addEventListener('click', closeMenu);
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
   mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   // Smooth scroll for anchor links
