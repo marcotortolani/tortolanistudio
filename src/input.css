@@ -10,6 +10,14 @@
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', system-ui, sans-serif;
   }
+
+  /* Remove default outline; rely on :focus-visible for keyboard users */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid #234A3A;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 @layer components {
@@ -20,6 +28,19 @@
     transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered child reveals — JS sets --stagger-index on each child */
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity   0.7s cubic-bezier(0.25, 1, 0.5, 1) var(--stagger-delay, 0ms),
+      transform 0.7s cubic-bezier(0.25, 1, 0.5, 1) var(--stagger-delay, 0ms);
+  }
+  .reveal-child.active {
     opacity: 1;
     transform: translateY(0);
   }
@@ -73,13 +94,41 @@
   .btn-underline-anim:hover::after { width: calc(100% - 48px); }
   .btn-underline-anim-hero:hover::after { width: calc(100% - 64px); }
 
+  /* Premium hover lift for CTA buttons (forest-accent background) */
+  .btn-lift {
+    transition:
+      transform     0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow    0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.3s ease;
+  }
+  .btn-lift:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px -8px rgba(9, 51, 37, 0.4);
+  }
+
+  /* Ivory CTA (dark band) lift — softer shadow */
+  .btn-lift-ivory:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px -8px rgba(26, 26, 26, 0.25);
+  }
+}
+
+/* ── Nav scrolled state ───────────────────────────────────────
+   JS adds .scrolled to <nav> when window.scrollY > 20.
+   Background becomes more opaque; inner container shrinks. */
+nav.scrolled {
+  background-color: rgba(249, 249, 246, 0.96);
+}
+nav.scrolled > div {
+  height: 64px; /* h-16 — collapses from h-20 */
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Mobile menu ──────────────────────────────────────────────
    Usamos opacity + visibility + transform en vez de display:none
    para poder animar la apertura/cierre. */
 #mobile-menu {
-  display: flex;          /* siempre flex, la visibilidad la maneja CSS */
+  display: flex;
   flex-direction: column;
   gap: 2rem;
   position: fixed;
@@ -99,7 +148,7 @@
   transition:
     opacity    0.35s cubic-bezier(0.16, 1, 0.3, 1),
     transform  0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s   linear 0.35s;   /* se oculta DESPUÉS de que termina la animación */
+    visibility 0s   linear 0.35s;
 }
 
 #mobile-menu.open {
@@ -110,7 +159,7 @@
   transition:
     opacity    0.35s cubic-bezier(0.16, 1, 0.3, 1),
     transform  0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s   linear 0s;     /* visible inmediatamente al abrir */
+    visibility 0s   linear 0s;
 }
 
 /* Items del menú: se deslizan con pequeño stagger */
@@ -132,9 +181,7 @@
 }
 #mobile-menu.open > a { opacity: 1; transform: none; }
 
-/* ── Ícono hamburguesa/X ──────────────────────────────────────
-   La transición de escala + rotación hace la magia;
-   el JS hace el swap del contenido cuando el ícono está invisible. */
+/* ── Ícono hamburguesa/X ──────────────────────────────────────*/
 #menu-btn .material-symbols-outlined {
   display: inline-block;
   transition:
@@ -144,4 +191,25 @@
 #menu-btn .material-symbols-outlined.icon-swapping {
   transform: scale(0.3) rotate(45deg);
   opacity: 0;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────*/
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn-lift:hover,
+  .btn-lift-ivory:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .img-hover-scale img { transition: none; }
+  #mobile-menu,
+  #mobile-menu.open {
+    transition: none;
+  }
+  #menu-btn .material-symbols-outlined { transition: none; }
 }
